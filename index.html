@@ -51,7 +51,7 @@ button{background:#ff69b4;color:white;border:none;font-size:16px}
 <select><option>Nenhum</option><option>Brilhantes (+0,35€)</option><option>Fotos (+2€)</option><option>Cartão (+0,30€)</option></select>
 </div>
 
-<button>Enviar Encomenda 💌</button>
+<button onclick="enviarEmail()">Enviar Encomenda 💌</button>
 </div>
 <script>
 function mostrarCampos(){
@@ -59,6 +59,8 @@ function mostrarCampos(){
 const tipo=document.getElementById('tipo').value;
 if(tipo) document.getElementById(tipo).classList.remove('hidden');
 }
+function enviarEmail(){window.location.href='mailto:atelierfloralcetim@gmail.com?subject=Nova Encomenda Atelier Floral';}
 </script>
 </body>
 </html>
+
