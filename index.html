@@ -1,51 +1,58 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Atelier Floral</title>
 <style>
-body{
-font-family:Arial;
-background:#ffeef5;
-text-align:center;
-padding:40px;
-color:#d63384;
-}
-.box{
-background:white;
-padding:30px;
-border-radius:20px;
-max-width:600px;
-margin:auto;
-box-shadow:0 10px 30px rgba(0,0,0,0.1);
-}
-input,textarea{
-width:90%;
-padding:12px;
-margin:10px;
-border:1px solid #f8c8dc;
-border-radius:10px;
-}
-button{
-background:#ff69b4;
-color:white;
-padding:15px 25px;
-border:none;
-border-radius:12px;
-cursor:pointer;
-}
+body{font-family:Arial;background:#ffeef6;padding:30px;color:#444}
+.container{max-width:700px;margin:auto;background:white;padding:30px;border-radius:20px;box-shadow:0 8px 20px rgba(0,0,0,.1)}
+input,select,button{width:100%;padding:14px;margin:10px 0;border:1px solid #ddd;border-radius:12px}
+button{background:#ff69b4;color:white;border:none;font-size:16px}
+.hidden{display:none}
 </style>
 </head>
 <body>
-<div class="box">
+<div class="container">
 <h1>🌸 Atelier Floral 🌸</h1>
 <p>Encomendas de flores de cetim</p>
-
 <input placeholder="Nome">
 <input placeholder="Número de telefone">
 <input type="date">
-<textarea placeholder="Detalhes da encomenda"></textarea>
-
-<button>Enviar Encomenda</button>
+<select id="tipo" onchange="mostrarCampos()">
+<option value="">Seleciona o tipo</option>
+<option value="rosas">Ramo de rosas (2€ por flor)</option>
+<option value="individuais">Flores individuais (4€)</option>
+<option value="tematicos">Ramos temáticos (2€ por flor)</option>
+<option value="caixa">Caixa de flores (27€)</option>
+</select>
+<div id="rosas" class="hidden">
+<input placeholder="Quantidade">
+<input placeholder="Cor">
+<select><option>Nenhum</option><option>Brilhantes (+0,35€)</option><option>Fotos (+2€)</option><option>Cartão (+0,30€)</option></select>
 </div>
+<div id="individuais" class="hidden">
+<select><option>Rosa</option><option>Girassol</option></select>
+<input placeholder="Cor">
+<select><option>Nenhum</option><option>Brilhantes (+0,35€)</option><option>Fotos (+2€)</option><option>Cartão (+0,30€)</option></select>
+</div>
+<div id="tematicos" class="hidden">
+<input placeholder="Quantidade">
+<select><option>Rapunzel</option><option>Faísca McQueen</option><option>Stitch</option><option>Van Gogh</option><option>Tiana</option><option>Bela e o Monstro</option><option>Cinderela</option><option>Mérida</option><option>Ariel</option><option>Aurora</option><option>Rei Leão</option><option>Frozen Elsa</option><option>Frozen Anna</option><option>Minnie</option></select>
+</div>
+<div id="caixa" class="hidden">
+<input placeholder="Cor">
+<select><option>Nenhum</option><option>Brilhantes (+0,35€)</option></select>
+</div>
+<textarea placeholder="Notas"></textarea>
+<button>Enviar Encomenda 💌</button>
+</div>
+<script>
+function mostrarCampos(){
+['rosas','individuais','tematicos','caixa'].forEach(id=>document.getElementById(id).classList.add('hidden'));
+const tipo=document.getElementById('tipo').value;
+if(tipo) document.getElementById(tipo).classList.remove('hidden');
+}
+</script>
 </body>
 </html>
